@@ -23,6 +23,18 @@ export const APP_ROUTES: Routes = [
       })
         .then(m => m.FlightsModule)
   },
+  {
+    path: 'flights2',
+    // loadChildren: () => import('mfe1/Module').then(m => m.FlightsModule)
+    loadChildren: () =>
+      loadRemoteModule({
+        // remoteEntry: 'http://localhost:3000/remoteEntry.js',
+        remoteName: 'mfe2',
+        exposedModule: './Module'
+      })
+        .then(m => m.FlightsModule)
+
+  },
 
   {
     path: '**',

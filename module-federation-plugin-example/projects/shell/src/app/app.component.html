@@ -1,7 +1,8 @@
 <ul>
     <li><img src="../assets/angular.png" width="50"></li>
-    <li><a routerLink="/">Home</a></li>
-    <li><a (click)="onChange()" routerLink="/flights/flights-search">Se connecter</a></li>
+    <li *ngIf="authService.login === false"><a (click)="goToHome()" routerLink="/">Se déconnecter</a></li>
 </ul>
+
+<app-home></app-home>
 
 <router-outlet></router-outlet>

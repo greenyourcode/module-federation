@@ -8,10 +8,11 @@ import { AuthService } from './login/auth.service';
 export class AppComponent {
   title = 'shell';
 
-  constructor(private authService: AuthService) { }
+  constructor(public authService: AuthService) { }
 
-  onChange() {
-    this.authService.setAuthorized(Math.random() >= 0.5);
+  goToHome() {
+    this.authService.setLogin(true);
   }
+
 }
 

@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
 import { Router } from '@angular/router';
 
 @Injectable({
@@ -7,6 +6,8 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
   value = false;
+  login = true;
+
   constructor(private router: Router) {
   }
 
@@ -14,8 +15,13 @@ export class AuthService {
     return this.value;
   }
 
+  public setLogin(value: boolean) {
+    this.login = value;
+  }
+
   public setAuthorized(value: boolean): void {
     this.value = value;
+    this.login = false;
     const i = this.router.config.findIndex(x => x.path === 'flights');
     this.router.config.splice(i, 1);
     this.router.config.push(

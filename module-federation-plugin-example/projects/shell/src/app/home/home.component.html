@@ -1,1 +1,3 @@
-<h1>Welcome!</h1>
+<ng-container *ngIf="authService.login === true">
+    <a (click)="onChange()" routerLink="/flights/flights-search">Se connecter</a>
+</ng-container>

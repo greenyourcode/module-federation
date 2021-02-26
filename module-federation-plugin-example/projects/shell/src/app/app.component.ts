@@ -14,7 +14,6 @@ export class AppComponent {
     this.authService.setAuthorized(Math.random() >= 0.5);
   }
 
-
   public get isManager$() {
     return this.authService.authorized$;
   }

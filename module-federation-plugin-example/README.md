@@ -1,2 +1,1 @@
-# Starterkit for Trying out @angular-architects/module-federation
-
+Use yarn to compile (not npm)

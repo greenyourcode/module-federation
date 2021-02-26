@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Router } from '@angular/router';
-import { loadRemoteModule } from '@angular-architects/module-federation';
 
 @Injectable({
   providedIn: 'root'

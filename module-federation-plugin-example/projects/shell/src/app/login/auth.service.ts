@@ -6,23 +6,16 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class AuthService {
-  public authorized$: Observable<boolean>;
-  private authorizedSource: BehaviorSubject<boolean>;
+  value = false;
   constructor(private router: Router) {
-    this.authorizedSource = new BehaviorSubject<boolean>(false);
-    this.authorized$ = this.authorizedSource.asObservable();
   }
 
   public isAuthorized(): boolean {
-    return this.authorizedSource.value;
+    return this.value;
   }
 
   public setAuthorized(value: boolean): void {
-    const previous = this.authorizedSource.value;
-    this.authorizedSource.next(value);
-    if (previous === this.authorizedSource.value) {
-      return;
-    }
+    this.value = value;
     const i = this.router.config.findIndex(x => x.path === 'flights');
     this.router.config.splice(i, 1);
     this.router.config.push(

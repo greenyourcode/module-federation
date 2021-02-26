@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Router } from '@angular/router';
+import { loadRemoteModule } from '@angular-architects/module-federation';
 
 @Injectable({
   providedIn: 'root'
@@ -25,16 +26,8 @@ export class AuthService {
     }
     const i = this.router.config.findIndex(x => x.path === 'flights');
     this.router.config.splice(i, 1);
-    /* this.router.config.push(
-      {
-        path: 'flights',
-        loadChildren: () =>
-          loadRemoteModule({
-            remoteName: 'mfe1',
-            exposedModule: './Module'
-          })
-            .then(m => m.FlightsModule)
-      }
-    ); */
+    this.router.config.push(
+      { path: '', loadChildren: () => import('./login.module').then(mod => mod.LoginModule) }
+    );
   }
 }

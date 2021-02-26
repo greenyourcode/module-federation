@@ -2,7 +2,16 @@
     <li><img src="../assets/angular.png" width="50"></li>
     <li><a routerLink="/">Home</a></li>
     <li><a routerLink="/flights/flights-search">Se connecter</a></li>
-
+    <h3 *ngIf="isManager$ | async ; else consumer_content">Go to <a
+            [routerLink]="['/flights/flights-search']">flights</a>
+        page to manage our books.</h3>
+    <ng-template #consumer_content>
+        <h3>Go to <a [routerLink]="['/books']">books</a> page to see our books.</h3>
+    </ng-template>
+    <h3 *ngIf="(isManager$ | async)===false">Go to <a [routerLink]="['']">login</a> if you are the library
+        manager.</h3>
 </ul>
 
 <router-outlet></router-outlet>
+
+<button (click)="onChange()">Change</button>

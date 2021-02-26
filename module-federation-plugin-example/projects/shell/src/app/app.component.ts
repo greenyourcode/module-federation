@@ -1,4 +1,5 @@
-import { Component, ViewChild, ViewContainerRef, ɵrenderComponent as renderComponent, Inject, Injector, ComponentFactoryResolver } from '@angular/core';
+import { Component } from '@angular/core';
+import { AuthService } from './login/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,16 @@ import { Component, ViewChild, ViewContainerRef, ɵrenderComponent as renderComp
 })
 export class AppComponent {
   title = 'shell';
+
+  constructor(private authService: AuthService) { }
+
+  onChange() {
+    this.authService.setAuthorized(Math.random() >= 0.5);
+  }
+
+
+  public get isManager$() {
+    return this.authService.authorized$;
+  }
 }
 

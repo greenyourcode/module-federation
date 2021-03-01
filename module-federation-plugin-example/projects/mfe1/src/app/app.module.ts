@@ -18,7 +18,7 @@ import { APP_ROUTES } from './app.routes';
   ],
   providers: [],
   bootstrap: [
-      AppComponent
+    AppComponent
   ]
 })
 export class AppModule { }

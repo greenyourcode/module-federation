@@ -1,3 +1,7 @@
 <ng-container *ngIf="authService.login === true">
-    <a (click)="onChange()" routerLink="/flights/flights-search">Se connecter</a>
+    <a (click)="onConnect()" routerLink="/flights/flights-search">Se connecter</a>
+    <mat-radio-group value="isTheManager" (change)="onChangeAnswer($event)">
+        <mat-radio-button [value]="false">MFE1</mat-radio-button>
+        <mat-radio-button [value]="true">MFE2 </mat-radio-button>
+    </mat-radio-group>
 </ng-container>

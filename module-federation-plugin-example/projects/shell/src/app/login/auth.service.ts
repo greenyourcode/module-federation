@@ -20,11 +20,10 @@ export class AuthService {
   }
 
   public setApp(value: boolean): void {
-    this.value = !value;
+    this.value = value;
   }
 
   public setAuthorized(value: boolean): void {
-    /* this.value = value; */
     this.login = false;
     const i = this.router.config.findIndex(x => x.path === 'flights');
     this.router.config.splice(i, 1);
